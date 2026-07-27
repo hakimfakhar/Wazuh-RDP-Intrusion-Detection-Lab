@@ -3,7 +3,7 @@
 <rule id="100507" level="10">
   <if_group>sysmon_event1</if_group>
 
-  <field name="win.eventdata.commandLine" type="pcre2">(?i)(schtasks|Register-ScheduledTask)</field>
+  <field name="win.eventdata.commandLine" type="pcre2">(schtasks|Register-ScheduledTask)</field>
 
   <description>Scheduled task creation detected</description>
 
@@ -23,7 +23,7 @@
 
   <if_group>sysmon_event1</if_group>
 
-  <field name="win.eventdata.commandLine" type="pcre2">(?i)whoami(\s+/all)?</field>
+  <field name="win.eventdata.commandLine" type="pcre2">whoami(\s+/all)?</field>
 
   <description>
   User account discovery using whoami command
@@ -49,7 +49,7 @@
 
   <if_group>sysmon_event1</if_group>
 
-  <field name="win.eventdata.commandLine" type="pcre2">(?i)tasklist</field>
+  <field name="win.eventdata.commandLine" type="pcre2">tasklist</field>
 
   <description>
   Process discovery using tasklist detected
@@ -73,9 +73,9 @@
 
 <if_group>sysmon_event1</if_group>
 
-<field name="win.eventdata.commandLine" type="pcre2">(?i)(systeminfo|hostname)</field>
+<field name="win.eventdata.commandLine" type="pcre2">(systeminfo|hostname)</field>
 
-<field name="win.eventdata.image" type="pcre2">(?i)(systeminfo|hostname)</field>
+<field name="win.eventdata.image" type="pcre2">(systeminfo|hostname)</field>
 
 <description>
 System information discovery detected
@@ -95,7 +95,7 @@ System information discovery detected
 
   <if_group>sysmon_event1</if_group>
 
-  <field name="win.eventdata.commandLine" type="pcre2">(?i)ipconfig</field>
+  <field name="win.eventdata.commandLine" type="pcre2">ipconfig</field>
 
   <description>
   Network discovery using ipconfig detected
@@ -115,7 +115,7 @@ System information discovery detected
 
   <if_group>sysmon_event1</if_group>
 
-  <field name="win.eventdata.commandLine" type="pcre2">(?i)route</field>
+  <field name="win.eventdata.commandLine" type="pcre2">route</field>
 
   <description>
   Route table discovery detected
@@ -183,7 +183,7 @@ System information discovery detected
 </group>
 
 
-group name="windows,sysmon,">
+<group name="windows,sysmon,">
  <rule id="998900" level="13">
     <if_sid>61603</if_sid>
     <field name="win.eventdata.image" type="pcre2">cipher.exe</field>
