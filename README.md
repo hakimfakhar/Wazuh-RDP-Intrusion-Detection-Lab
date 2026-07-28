@@ -49,7 +49,9 @@ The biggest lesson I took from this project is that my SIEM's detection coverage
 | `Reports/` | `RDP_Attack_Simulation_and_Detection_using_Wazuh_Report.pdf` |
 
 [Configuration](Configuration/)
+
 [Rules](Rules/)
+
 [Reports](Reports/)
 
 The PDF report walks through every stage of the attack with alert screenshots, raw Sysmon event data, and the corresponding Wazuh detection rules. It also includes:
