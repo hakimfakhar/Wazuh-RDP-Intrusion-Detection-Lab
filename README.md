@@ -47,10 +47,11 @@ The biggest lesson I took from this project is that my SIEM's detection coverage
 | `Configuration/` | `ossec.conf`, `sysmon-integration`, `virus-total-integration` |
 | `Rules/` | `local_rules.xml`, `suricata-rules.yaml` |
 | `Reports/` | `RDP_Attack_Simulation_and_Detection_using_Wazuh_Report.pdf` |
+| `Findings/` | `MITRE_ATTACK_Mapping.md`, `Attack_Timeline.md`, `Chainsaw_Threat_Hunting.md` |
+
+**Quick links:** [Configuration](Configuration/) · [Rules](Rules/) · [Reports](Reports/) · [Findings](Findings/)
 
 
- **Quick links:** [Configuration](Configuration/) · [Rules](Rules/) · [Reports](Reports/) . [MITRE ATT&CK Mapping](Findings/MITRE_ATTACK_Mapping.md)
-. [Attack Timeline](Findings/Attack_Timeline.md) . [Chainsaw Threat Hunting](Findings/Chainsaw_Threat_Hunting.md)
 
 The PDF report walks through every stage of the attack with alert screenshots, raw Sysmon event data, and the corresponding Wazuh detection rules. It also includes:
 
