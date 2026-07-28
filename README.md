@@ -48,11 +48,8 @@ The biggest lesson I took from this project is that my SIEM's detection coverage
 | `Rules/` | `local_rules.xml`, `suricata-rules.yaml` |
 | `Reports/` | `RDP_Attack_Simulation_and_Detection_using_Wazuh_Report.pdf` |
 
-[Configuration](Configuration/)
 
-[Rules](Rules/)
-
-[Reports](Reports/)
+ **Quick links:** [Configuration](Configuration/) · [Rules](Rules/) · [Reports](Reports/)
 
 The PDF report walks through every stage of the attack with alert screenshots, raw Sysmon event data, and the corresponding Wazuh detection rules. It also includes:
 
@@ -62,7 +59,7 @@ The PDF report walks through every stage of the attack with alert screenshots, r
 - Detection engineering decisions and coverage gaps
 - Offline threat hunting results using Chainsaw and Sigma rules
 
-The report is intended to serve as both project documentation and an incident analysis report. If you only read one section, I recommend reading the detection gap discussed in **Chapter 6.8** and the Chainsaw hunt in **Chapter 9**.
+The report is intended to serve as both project documentation and an incident analysis report. If you only read one section, I recommend reading the detection gap discussed in **Chapter 6.7** and the Chainsaw hunt in **Chapter 9**.
 
 ---
 
