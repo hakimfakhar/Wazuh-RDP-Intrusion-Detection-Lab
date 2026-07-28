@@ -49,7 +49,8 @@ The biggest lesson I took from this project is that my SIEM's detection coverage
 | `Reports/` | `RDP_Attack_Simulation_and_Detection_using_Wazuh_Report.pdf` |
 
 
- **Quick links:** [Configuration](Configuration/) · [Rules](Rules/) · [Reports](Reports/)
+ **Quick links:** [Configuration](Configuration/) · [Rules](Rules/) · [Reports](Reports/) . [MITRE ATT&CK Mapping](Findings/MITRE_ATTACK_Mapping.md)
+. [Attack Timeline](Findings/Attack_Timeline.md) . [Chainsaw Threat Hunting](Findings/Chainsaw_Threat_Hunting.md)
 
 The PDF report walks through every stage of the attack with alert screenshots, raw Sysmon event data, and the corresponding Wazuh detection rules. It also includes:
 
