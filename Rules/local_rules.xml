@@ -1,9 +1,10 @@
+
 <group name="windows,authentication,bruteforce,">
 
 <rule id="100507" level="10">
   <if_group>sysmon_event1</if_group>
 
-  <field name="win.eventdata.commandLine" type="pcre2">(schtasks|Register-ScheduledTask)</field>
+  <field name="win.eventdata.commandLine" type="pcre2">(?i)(schtasks|Register-ScheduledTask)</field>
 
   <description>Scheduled task creation detected</description>
 
@@ -23,7 +24,7 @@
 
   <if_group>sysmon_event1</if_group>
 
-  <field name="win.eventdata.commandLine" type="pcre2">whoami(\s+/all)?</field>
+  <field name="win.eventdata.commandLine" type="pcre2">(?i)whoami(\s+/all)?</field>
 
   <description>
   User account discovery using whoami command
@@ -49,7 +50,7 @@
 
   <if_group>sysmon_event1</if_group>
 
-  <field name="win.eventdata.commandLine" type="pcre2">tasklist</field>
+  <field name="win.eventdata.commandLine" type="pcre2">(?i)tasklist</field>
 
   <description>
   Process discovery using tasklist detected
@@ -73,9 +74,9 @@
 
 <if_group>sysmon_event1</if_group>
 
-<field name="win.eventdata.commandLine" type="pcre2">(systeminfo|hostname)</field>
+<field name="win.eventdata.commandLine" type="pcre2">(?i)(systeminfo|hostname)</field>
 
-<field name="win.eventdata.image" type="pcre2">(systeminfo|hostname)</field>
+<field name="win.eventdata.image" type="pcre2">(?i)(systeminfo|hostname)</field>
 
 <description>
 System information discovery detected
@@ -95,7 +96,7 @@ System information discovery detected
 
   <if_group>sysmon_event1</if_group>
 
-  <field name="win.eventdata.commandLine" type="pcre2">ipconfig</field>
+  <field name="win.eventdata.commandLine" type="pcre2">(?i)ipconfig</field>
 
   <description>
   Network discovery using ipconfig detected
@@ -115,7 +116,7 @@ System information discovery detected
 
   <if_group>sysmon_event1</if_group>
 
-  <field name="win.eventdata.commandLine" type="pcre2">route</field>
+  <field name="win.eventdata.commandLine" type="pcre2">(?i)route</field>
 
   <description>
   Route table discovery detected
@@ -131,15 +132,30 @@ System information discovery detected
 
 <group name="windows,bruteforce,authentication,">
 
-<rule id="100200" level="10" frequency="5" timeframe="60">
-  <if_matched_sid>60122</if_matched_sid>
-  <same_source_ip />
-  <description>Possible RDP/Windows brute force attack - multiple failed logons</description>
-  <mitre>
-    <id>T1110</id>
-    <id>T1110.001</id>
-  </mitre>
-</rule>
+  <rule id="100200"
+        level="10"
+        frequency="5"
+        timeframe="60">
+
+    <if_matched_sid>60122</if_matched_sid>
+
+    <same_field>win.eventdata.ipAddress</same_field>
+
+    <description>
+      Possible Windows brute force attack - multiple failed logons from $(win.eventdata.ipAddress)
+    </description>
+
+    <group>
+      authentication_failed,
+      bruteforce,
+    </group>
+
+    <mitre>
+      <id>T1110</id>
+      <id>T1110.001</id>
+    </mitre>
+
+  </rule>
 
 </group>
 
@@ -159,7 +175,7 @@ System information discovery detected
   
   <rule id="100500" level="5">
     <if_sid>60122</if_sid>
-    <field name="win.eventdata.logonType">10</field>
+    <field name="win.eventdata.logonType">3</field>
     <description>Failed RDP login attempt</description>
     <group>rdp_failed_login,authentication_failed,</group>
     <mitre>
@@ -183,10 +199,3 @@ System information discovery detected
 </group>
 
 
-<group name="windows,sysmon,">
- <rule id="998900" level="13">
-    <if_sid>61603</if_sid>
-    <field name="win.eventdata.image" type="pcre2">cipher.exe</field>
-    <description>Suspicious Cipher.exe execution</description>
- </rule>
-</group>
